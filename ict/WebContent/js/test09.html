@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+<table border="1">
+	<tr>
+		<td colspan="2" align = "center">+회원가입+</td>
+	</tr>
+		<td>아이디</td>
+		<td><input type="text"id="id"></td><br>
+	<tr>
+		<td>비밀번호</td>
+		<td><input type="text"id="pwd"></td><br>
+	</tr>
+	<tr>
+		<td>비밀번호확인</td>
+		<td><input type="text"id="pwd1"></td><br>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td><input type="text"id="name"></td><br>
+	</tr>
+	<tr>
+		<td>나이</td>
+		<td><input type="text"id="age"></td><br>
+	</tr>
+	<tr>
+		<td colspan="2" align = "center"><button onclick="login()">회원가입확인</button></td>
+	</tr>
+</table>
+<script>
+	function longin(){
+		var idObj = document.querySelector('#id');
+		var pwdObj = document.querySelector('#pwd');
+		var pwd1Obj = document.querySelector('#pwd1');
+		var nameObj = document.querySelector('#name');
+		var ageObj = document.querySelector('#age');
+		if(idObj.value.length<5){
+			alert("id는 5글자 이상입니다.");
+			idObj.value="";
+			idObj.focus();
+		}	
+		if(pwdObj.value.length<6){
+			alert("비밀번호는 6글자 이상입니다.")
+			pwdObj.value="";
+			pwdObj.focus();
+		}
+		if(pwdObj!=pwd1Obj){
+			alert("비밀번호가 일치하지 않습니다.")
+		}
+		if(nameObj.value.trim().length<1){
+			alert("이름은 빈문자만 아니면됩니다.")
+			nameObj.value="";
+			nameObj.focus();
+		}
+		if(ageObj.value.length>130){
+			alert("나이는 130살이상이면 안됩니다.")
+			ageObj.value="";
+			ageObj.focus();
+		}
+	}
+</script>
+</body>
+</html>
