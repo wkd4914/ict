@@ -5,6 +5,7 @@
 <title>회원가입</title>
 </head>
 <body>
+<form action="/user/join_ok.jsp" onsubmit="return login()">
 <table border="1">
 	<tr>
 		<td colspan="2" align = "center">+회원가입+</td>
@@ -31,6 +32,7 @@
 		<td colspan="2" align = "center"><button onclick="login()">회원가입확인</button></td>
 	</tr>
 </table>
+</form>
 <script>
 	function longin(){
 		var idObj = document.querySelector('#id');
@@ -38,29 +40,40 @@
 		var pwd1Obj = document.querySelector('#pwd1');
 		var nameObj = document.querySelector('#name');
 		var ageObj = document.querySelector('#age');
+		
 		if(idObj.value.length<5){
 			alert("id는 5글자 이상입니다.");
 			idObj.value="";
 			idObj.focus();
+			return false;
 		}	
 		if(pwdObj.value.length<6){
 			alert("비밀번호는 6글자 이상입니다.")
 			pwdObj.value="";
 			pwdObj.focus();
+			return false;
 		}
-		if(pwdObj!=pwd1Obj){
+		if(pwdObj.value===pwd1Obj.value){
 			alert("비밀번호가 일치하지 않습니다.")
+			pwd1Obj.value="";
+			pwd1Obj.focus();
+			return false;
 		}
+		
 		if(nameObj.value.trim().length<1){
 			alert("이름은 빈문자만 아니면됩니다.")
 			nameObj.value="";
 			nameObj.focus();
+			return false;
 		}
-		if(ageObj.value.length>130){
+		
+		if(parseInt(ageObj.value)>130){
 			alert("나이는 130살이상이면 안됩니다.")
 			ageObj.value="";
 			ageObj.focus();
+			return false;
 		}
+		return true;
 	}
 </script>
 </body>
